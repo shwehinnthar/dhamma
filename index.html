@@ -3,190 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ကြည်နူးဖွယ်ရာ ဓမ္မကမ္ဘာ</title>
+    <title>ကြည်နူးဖွယ်ရာ ဓမ္မကမ္ဘာ - Serene Dhamma World</title>
     
-    <!-- Google Fonts (Pyidaungsu & Poppins) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Pyidaungsu for Myanmar, Noto Serif for Titles, Lato for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Serif+Myanmar:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
+        /* --- Root Variables & Reset --- */
         :root {
-            --primary-gold: #f1c40f;
-            --dark-bg: #1a1a2e;
-            --glass-bg: rgba(255, 255, 255, 0.1);
+            --primary-gold: #D4AF37; /* Royal Gold */
+            --light-gold: #F3E5AB; /* Cream Gold */
+            --dark-bg: #0A0A0F; /* Ultra Dark Blue/Black */
+            --card-bg: #14141F; /* Slightly Lighter Dark */
+            --text-light: #F0F0F0;
+            --text-dark: #A0A0A0;
+            --shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
             height: 100%;
-            font-family: 'Poppins', 'Pyidaungsu', sans-serif;
+            font-family: 'Lato', 'Pyidaungsu', sans-serif;
             background-color: var(--dark-bg);
-            color: #fff;
+            color: var(--text-light);
             overflow-x: hidden;
+            line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
-        /* နောက်ခံ ဗီဒီယို သို့မဟုတ် ပုံ */
-        .hero-section {
+        h1, h2, h3 {
+            font-family: 'Noto Serif Myanmar', serif;
+            font-weight: 700;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.8); }
+            100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
+        }
+
+        /* --- Hero Section (The First Look) --- */
+        .hero {
             position: relative;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1507643199773-3e861f8a00e6?auto=format&fit=crop&q=80&w=2000');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(10,10,15,1)), 
+                        url('https://images.unsplash.com/photo-1545601445-4d6a0a0565f0?auto=format&fit=crop&q=80&w=2000');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            padding: 0 20px;
         }
 
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+        .hero-content {
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 10vw, 5rem);
             color: var(--primary-gold);
-            margin-bottom: 10px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+            animation: glow 3s infinite;
         }
 
-        .hero-content p {
+        .hero p {
             font-size: 1.2rem;
-            letter-spacing: 2px;
-            opacity: 0.9;
+            color: var(--light-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            opacity: 0.8;
         }
 
-        /* Content Container */
-        .main-content {
-            padding: 80px 20px;
-            max-width: 1200px;
+        /* Scroll Down Indicator */
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+            animation: bounce 2s infinite;
+            text-decoration: none;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* --- Main Content Section --- */
+        .main-container {
+            max-width: 1300px;
             margin: 0 auto;
+            padding: 100px 20px;
         }
 
-        .grid-container {
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-gold);
+            margin: 15px auto 0;
+        }
+
+        /* Grid Layout */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
         }
 
+        /* --- Premium Card Style --- */
         .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1);
+            background-color: var(--card-bg);
             border-radius: 20px;
-            padding: 25px;
-            transition: transform 0.3s ease;
+            padding: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+            position: relative;
+            overflow: hidden;
         }
+
+        .card:nth-child(1) { animation-delay: 0.3s; }
+        .card:nth-child(2) { animation-delay: 0.6s; }
 
         .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-gold);
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+        }
+
+        /* Card Decoration */
+        .card::before {
+            content: '☸';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 10rem;
+            color: rgba(212, 175, 55, 0.03);
+            transform: rotate(15deg);
         }
 
         .card h2 {
+            font-size: 1.8rem;
             color: var(--primary-gold);
-            border-left: 4px solid var(--primary-gold);
-            padding-left: 15px;
+            margin-bottom: 25px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h2::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 25px;
+            background: var(--primary-gold);
+            margin-right: 15px;
+            border-radius: 3px;
+        }
+
+        /* --- YouTube Section --- */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
             margin-bottom: 20px;
         }
 
-        /* YouTube Responsive Embed */
-        .video-box {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .video-box iframe {
+        .video-container iframe {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
+            border: 0;
         }
 
-        /* Radio Player Custom Style */
-        .radio-player {
-            background: rgba(0,0,0,0.3);
+        /* --- Radio Section --- */
+        .radio-info {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .radio-player-wrapper {
+            background: rgba(0,0,0,0.5);
             padding: 20px;
-            border-radius: 50px;
-            margin-top: 20px;
+            border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
         }
 
         audio {
             width: 100%;
-            height: 40px;
+            height: 35px;
+        }
+        
+        /* Customizing Audio Player (Webkit) */
+        audio::-webkit-media-controls-panel { background-color: transparent; }
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display { color: var(--primary-gold); }
+
+        .program-list {
+            list-style: none;
+            margin-top: 25px;
         }
 
+        .program-list li {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .program-list li::before {
+            content: '✦';
+            color: var(--primary-gold);
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 40px;
-            background: #0f0f1b;
+            padding: 60px 20px;
+            background-color: #050508;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        footer p {
+            color: var(--text-dark);
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.5);
+            opacity: 0.7;
         }
 
-        /* Scroll Down Animation */
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .card { padding: 30px; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero" id="top">
         <div class="hero-content">
             <h1>ကြည်နူးဖွယ်ရာ ဓမ္မကမ္ဘာ</h1>
-            <p>SERENE DHAMMA WORLD</p>
-            <div class="scroll-down">▼</div>
+            <p>Serene Dhamma World</p>
         </div>
+        <a href="#content" class="scroll-down">▼</a>
     </section>
 
-    <!-- Main Sections -->
-    <div class="main-content">
-        <div class="grid-container">
+    <!-- Main Content -->
+    <div class="main-container" id="content">
+        <h2 class="section-title">ဓမ္မဒေသနာတော်များ</h2>
+        
+        <div class="grid">
             
             <!-- YouTube Card -->
             <div class="card">
-                <h2>ကြည်နူးဖွယ်ရာဓမ္မကမ္ဘာ</h2>
-                <div class="video-box">
-                    <!-- YouTube Playlist Link -->
+                <h2>ဓမ္မရုပ်သံလွှင့်စဉ်</h2>
+                <div class="video-container">
+                    <!-- YouTube Channel Uploads Playlist -->
                     <iframe 
-    src="https://www.youtube.com/watch?v=Ubj9IS98Kh4" 
-    frameborder="0" 
-    allowfullscreen>
-</iframe>
+                        src="https://www.youtube.com/embed?listType=user_uploads&list=EiPhyuHlaing-n4t" 
+                        title="Dhamma Videos"
+                        allowfullscreen>
+                    </iframe>
                 </div>
-                <p style="margin-top:15px; font-size: 0.9rem;">တရားတော်များကို တစ်ဆက်တည်း နာယူကြည်ညိုနိုင်ပါသည်။</p>
+                <p style="color: var(--text-dark);">ဆရာမ ဒေါ်အိဖြူလှိုင်၏ တရားတော်များကို အစဉ်အတိုင်း နာယူကြည်ညိုနိုင်ပါသည်။</p>
             </div>
 
             <!-- Radio Card -->
             <div class="card">
                 <h2>ဓမ္မအသံလွှင့်ဌာန</h2>
-                <p>တိုက်ရိုက်အသံလွှင့်ထုတ်ချက်များကို နာယူရန်</p>
-                <div class="radio-player">
+                <p class="radio-info">တိုက်ရိုက်အသံလွှင့်ထုတ်ချက်များကို ၂၄ နာရီ နာယူရန်</p>
+                
+                <div class="radio-player-wrapper">
                     <audio controls>
-                        <source src="https://dhamma.pmyanmar.com/stream" type="audio/mpeg">
+                        <source src="https://stream.zeno.fm/f06u8v6v6p8uv" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
                 </div>
-                <ul style="margin-top:20px; list-style: none; padding: 0; font-size: 0.9rem; opacity: 0.8;">
-                    <li>✨ ၂၄ နာရီ ပဋ္ဌာန်းဒေသနာတော်များ</li>
-                    <li>✨ မဟာသမယသုတ်နှင့် အန္တရာယ်ကင်းပရိတ်တော်များ</li>
+
+                <ul class="program-list">
+                    <li>ပဋ္ဌာန်းဒေသနာတော်များနှင့် ပရိတ်တော်များ</li>
+                    <li>တရားတော်များနှင့် သံဝေဂရသများ</li>
+                    <li>စိတ်အေးချမ်းစေမယ့် ဓမ္မတေးများ</li>
                 </ul>
             </div>
 
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Serene Dhamma World. Designed for Peace.</p>
+        <p>&copy; 2026 Serene Dhamma World. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 5px;">Created for Spiritual Peace.</p>
     </footer>
 
 </body>
