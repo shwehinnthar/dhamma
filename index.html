@@ -1,155 +1,193 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
-မယ့် ဝဘ်ဆိုဒ် Design    <meta charset="UTF-8">
-    < Concept တစ်ခုကို အောက်ပါအတmeta name="viewport" content="width=device-width, initial-scale=1.0">
-    <ိုင်း ရေးဆွဲပေးလိုက်ပါတယ်။ ဒါဟာ ဖန်တီးမှုအပိုင်းအတွက်title>ကြည်နူးဖွယ်ရာ ဓမ္မကမ္ဘာ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ကြည်နူးဖွယ်ရာ ဓမ္မကမ္ဘာ</title>
+    
+    <!-- Google Fonts (Pyidaungsu & Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --primary-gold: #f1c40f;
+            --dark-bg: #1a1a2e;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+        }
+
         body, html {
-            height လမ်းညွှန် (Template) တစ်ခုဖြစ်ပြီး သင့်စိတ်ကြိုက် ပြ: 100%;
             margin: 0;
-            font-family: 'Pyidaungsu', sans-serif;
-            color: whiteန်လည်ပြင်ဆင်နိုင်ပါတယ်။
-
----
-
-## 🌐 ဝဘ်ဆိုဒ်အမည်: ကြည်နူးဖွယ်ရာ ဓမ္မကမ္ဘာ
-
-### ၁;
-        }
-
-        /* နောက်ခံပုံစနစ် - တရားနာနေသည့်ပုံ */
-        .bg-image {
-            background-image: linear။ ပထမဆုံး မြင်တွေ့-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), ရမည့်အပိုင်း (Header & Hero
-                              url('https://images.unsplash.com/photo-1545601445-4d6a0a0 Section)
-*   **နောက်ခံပုံ (Background):** တောရိပ်တောင်ရိပ်တွင်ဖြစ်စေ၊ အေးချမ်းသည့် ဘု565f0?auto=format&fit=crop&q=80&w=1600'); 
+            padding: 0;
             height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            positionရားကျောင်းဆောင်အတွင်း၌ဖြစ်စေ တရားဘာဝနာ ပွားများအားထုတ်နေသည့် ပုံရိပ် (High Quality Static Image သို့မဟုတ် Subtle: fixed;
-            width: 100%;
-            z-index: -1;
+            font-family: 'Poppins', 'Pyidaungsu', sans-serif;
+            background-color: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        .container {
+        /* နောက်ခံ ဗီဒီယို သို့မဟုတ် ပုံ */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 50px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1507643199773-3e861f8a00e6?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        header h1 {
-            font-size: 3rem Video Background)။
-*   **စာသား (Text Overlay):** 
-    > **"စိတ်၏အေးငြိမ်းရာ၊ ကြည်နူးဖွယ်;
-            text-shadow: 2px 2px 4px #000;
-            color: #f1c40f;
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .content-section {
-            background: rgba(255, 255, 255, 0.1ရာ ဓမ္မကမ္ဘာမှ ကြိုဆိုပါ၏။"**
-*   **Menu Bar:** ပင်မစာမျက်နှာ |);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
- တရားတော်များ | YouTube Playlist | ဓမ္မရေဒီယို | ဆက်သွယ်ရန်။
-
----
-
-### ၂။ တရားတော်များ            margin: 20px auto;
-            max-width: 800px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .hero-content p {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
         }
 
-        .video-container {
+        /* Content Container */
+        .main-content {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+        }
+
+        .card h2 {
+            color: var(--primary-gold);
+            border-left: 4px solid var(--primary-gold);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* YouTube Responsive Embed */
+        .video-box {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
+            border-radius: 15px;
             overflow: hidden;
-            margin-top: 20 နာယူရန် ကဏ္ဍ (Dhamma Media Player)
-ဤအပိုင်းတွင် အသံလွှင့်ဌာနများနှင့် ဗီဒီယိုများကို စpx;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .video-container iframe {
+        .video-box iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-ုစည်းထားပါမည်။
-
-#### **📻 ဓမ္မရေဒီယို (Radio Station)**
-Live လွှင့်နေသော ဓမ္မ            width: 100%;
-            height: 100%;
-            border-radius: 10px;
+            top: 0; left: 0; width: 100%; height: 100%;
         }
 
-        .radio-section {
-            margin-top: 30px;
+        /* Radio Player Custom Style */
+        .radio-player {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 50px;
+            margin-top: 20px;
         }
 
         audio {
             width: 100%;
-            margin-top:ရေဒီယိုလိုင်းများကို Player တစ်ခုဖြင့် ထည့်သွင်းပါမည်။
-*   **Status:** 🔴 တိုက်ရိုက်ထုတ်လွှ 10px;
+            height: 40px;
         }
 
         footer {
-            margin-top: 50px;
+            text-align: center;
+            padding: 40px;
+            background: #0f0f1b;
             font-size: 0.9rem;
-င့်နေသည် (Live Now)
-*   **Player:** [Play/Pause Button] | [Volume Control]
-*   *မှတ်ချက်: အင်            opacity: 0.8;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Scroll Down Animation */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
         }
     </style>
 </head>
 <body>
 
-<div class="bg-image"></div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>ကြည်နူးဖွယ်ရာ ဓမ္မကမ္ဘာ</h1>
+            <p>SERENE DHAMMA WORLD</p>
+            <div class="scroll-down">▼</div>
+        </div>
+    </section>
 
-<div class="container">
-    <header>
-        <h1>ကြည်နူးဖွယ်ရာ ဓမ္မကမ္ဘာ</h1>
-        <p>တရားတော်များဖြင့် စိတ်နှလုံး အေးချမ်းပါစေ</p>
-    </header>
-
-    <main>
-        <!-- YouTube Section -->
-        <section classတာနက်ရေဒီယို Link များ (ဥပမာ- သာသနာ့အလင်းတိုင် ရေဒီယို) ကို ချိတ်ဆက်ပေးနိုင်ပါသည်။="content-section">
-            <h2><span style="color: #ff4757;">●</span> တရားတော်များ (YouTube)</h2>
-            *
-
-#### **📺 YouTube ဓမ္မကဏ္ဍ**
-YouTube ရှိ တရားတော်များကို ဝဘ်ဆိုဒ်ထဲတွင် တိုက်ရိုက်ကြည့်<div class="video-container">
-                <!-- YouTube Embed Link ကို ဒီမှာ အစားထိုးနိုင်ပါတယ် -->
-                <iframe src="https://www.youtubeရှုနိုင်ရန် စီစဉ်ပါမည်။
-*   **YouTube Embed:** ဆရာတော်ကြီးများ၏ တရားပွဲ (Playlist) ကို Grid.com/embed/videoseries?list=PL-WstXit8WIn0vMcl9X9qf26_m3-l-oY7" frameborder="0" allowfullscreen></iframe>
+    <!-- Main Sections -->
+    <div class="main-content">
+        <div class="grid-container">
+            
+            <!-- YouTube Card -->
+            <div class="card">
+                <h2>ကြည်နူးဖွယ်ရာဓမ္မကမ္ဘာ</h2>
+                <div class="video-box">
+                    <!-- YouTube Playlist Link -->
+                    <iframe 
+    src="https://www.youtube.com/embed?listType=user_uploads&list=EiPhyuHlaing-n4t" 
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
+                </div>
+                <p style="margin-top:15px; font-size: 0.9rem;">တရားတော်များကို တစ်ဆက်တည်း နာယူကြည်ညိုနိုင်ပါသည်။</p>
             </div>
-        </section>
 
-        <!-- Radio Section -->
-        <section class="content-section view ဖြင့် ပြသမည်။
-*   **Features:** Search bar ပါဝင်မည်ဖြစ်ပြီး မိမိနာယူလိုသော ဆရာတော်အမည် သ">
-            <h2><span style="color: #1e90ff;">●</span> ဓမ္မ Radio (တိုက်ရိုက်ထုတ်လွှင့်ို့မဟုတ် တရားတော်ခေါင်းစဉ်ဖြင့် ရှာဖွေနိုင်မည်။
-
----
-
-### ၃။ တရားတော်များ အမျိုးအစားအလိုက် ခမှု)</h2>
-            <div class="radio-section">
-                <p>တရားတော်များကို တိုက်ရိုက်နာယူရန်</p>
-                <!--ွဲခြားခြင်း (Categories)
-အသုံးပြုသူများ လွယ်ကူစွာ ရှာဖွေနိုင်ရန် အောက်ပါအတိုင်း ခွဲထားပါမည် - Radio Stream URL ရှိလျှင် src ထဲတွင် ထည့်ပါ -->
-                <audio controls>
-                    <source src="https://stream-url-here.mp3" type="audio/mpeg">
-                    သင်၏ Browser သည် Audio အား Support မလုပ်ပါ။
-                </audio>
+            <!-- Radio Card -->
+            <div class="card">
+                <h2>ဓမ္မအသံလွှင့်ဌာန</h2>
+                <p>တိုက်ရိုက်အသံလွှင့်ထုတ်ချက်များကို နာယူရန်</p>
+                <div class="radio-player">
+                    <audio controls>
+                        <source src="https://dhamma.pmyanmar.com/stream" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <ul style="margin-top:20px; list-style: none; padding: 0; font-size: 0.9rem; opacity: 0.8;">
+                    <li>✨ ၂၄ နာရီ ပဋ္ဌာန်းဒေသနာတော်များ</li>
+                    <li>✨ မဟာသမယသုတ်နှင့် အန္တရာယ်ကင်းပရိတ်တော်များ</li>
+                </ul>
             </div>
-        </
-*   **ပရိတ်တော်နှင့် အန္တရာယ်ကင်းတရားများ**
-*   **ဝိပဿနာတရားတော်section>
-    </main>
+
+        </div>
+    </div>
 
     <footer>
-        <p>&copy; 2026 ကြည်နူးဖွယ်ရာ ဓမ္မကမ္ဘာ - All Rights Reserved.</p>
+        <p>&copy; 2026 Serene Dhamma World. Designed for Peace.</p>
     </footer>
-</div>
 
 </body>
 </html>
